@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <title>LEGIT</title>
+  <link rel="stylesheet" href="materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="javascript/app.js"></script>
+</head>
+
+<body ng-app="legitNews" ng-controller="MainCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+          <h2>Legit</h2>
+          <div class="divider"></div>
+        <div ng-repeat="post in posts | orderBy: '-upvotes'">
+          <button ng-click="incrementUpvotes(post)" class="btn space">^ {{post.upvotes}}</button>
+          <span>
+                    <a ng-show="post.link" href="{{post.link}}" target="_blank" style="font-size: 18px;">
+                    {{post.title}}
+                    </a>
+                    <span ng-hide="post.link" style="font-size: 18px;">
+                    {{post.title}}
+                    </span>
+          </span>
+        </div>
+        <div class="divider"></div>
+        <form ng-submit="addPost()">
+          <h4 class="page-header">Add a new post</h4>
+          <div class="form-group">
+            <input type="text" placeholder="Title" ng-model="title"></input>
+            <br/>
+            <input type="text" placeholder="Link" ng-model="link">
+            <br/>
+            <button type="submit" class="btn">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
