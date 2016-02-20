@@ -22,9 +22,10 @@ app.controller('MainCtrl', [
       });
       $scope.title = '';
       $scope.link = '';
-      $scope.posts = posts.posts;
     };
 
+    $scope.posts = posts.posts;
+    
 
     $scope.incrementUpvotes = function(post) {
       post.upvotes += 1;
